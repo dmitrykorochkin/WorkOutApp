@@ -1,2 +1,2 @@
 # WorkOutApp
-# WorkOutApp
+# Приложение для тренировок
