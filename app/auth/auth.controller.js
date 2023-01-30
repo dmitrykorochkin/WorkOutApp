@@ -1,5 +1,7 @@
+import { prisma } from "../prisma.js";
 
 
 export const authUser = async (req, res) => {
-  res.json({message: 'You are authenticated'});
+  const user =  await prisma.user.findMany();
+  res.json(user);
 };
