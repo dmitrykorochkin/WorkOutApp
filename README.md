@@ -1,3 +1,3 @@
 # WorkOutApp
 # Приложение для тренировок
-## Backend - JavaScript
+## This repository contains the back end of the WorkOutApp application.
