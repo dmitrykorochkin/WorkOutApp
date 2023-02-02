@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 export const generateToken = userId =>  jwt.sign(
   {
-    userId,
+    userId
   },
   process.env.ACCESS_TOKEN,
   {

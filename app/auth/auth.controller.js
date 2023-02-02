@@ -1,5 +1,12 @@
-import asyncHandler from 'express-async-handler';
-import { prisma } from "../prisma.js";
+// import { faker } from '@faker-js/faker'
+import { hash } from 'argon2'
+import asyncHandler from 'express-async-handler'
+
+import { prisma } from '../prisma.js'
+import { UserFields } from '../utils/user.utils.js'
+
+import { generateToken } from './generate-token.js'
+
 
 
 export const authUser = asyncHandler ( async (req, res) => {
@@ -15,7 +22,7 @@ export const registerUser = asyncHandler ( async (req, res) => {
 
   const {email, password} = req.body;
 
-  const isHaveUser = await prisma.user.find({
+  const isHaveUser = await prisma.user.findUnique({
     where: {
       email
     }
@@ -28,11 +35,15 @@ export const registerUser = asyncHandler ( async (req, res) => {
 
   const user = await prisma.user.create({
     data: {
-      email, password: await hash(password), name: faker.name.fullname()
-    }
+      email, 
+      password: await hash(password), 
+      name: faker.name.fullname()
+    },
+    select: UserFields
   });
 
-  const token = generateToken()
 
-  res.json(req.body);
+  const token = generateToken(user.id);
+
+  res.json({user, token});
 });
