@@ -21,9 +21,12 @@
   },
   "dependencies": {
     "@prisma/client": "^4.9.0",
+    "argon2": "^0.30.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
+    "faker-js": "^1.0.0",
+    "jsonwebtoken": "^9.0.0",
     "pg": "^8.9.0"
   }
 }
