@@ -1,6 +1,7 @@
 import  express  from "express";
 import authRoutes from "./app/auth/auth.routes.js";
 import userRoutes from "./app/user/user.routes.js";
+import exerciseRoutes from "./app/exercise/exercise.routes.js";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import { prisma } from "./app/prisma.js";
@@ -14,8 +15,12 @@ async function main() {
    if(process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
   app.use(express.json());
-  app.use('/api/auth/', authRoutes);
-  app.use('/api/user/', userRoutes);
+
+  const __dirname = path.resolve();
+  app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+  app.use('/api/auth', authRoutes);
+  app.use('/api/user', userRoutes);
+  app.use('/api/exercise', exerciseRoutes);
   app.use(notFound);
   app.use(errorHandler);
 

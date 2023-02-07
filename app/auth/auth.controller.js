@@ -1,11 +1,11 @@
 // import { faker } from '@faker-js/faker'
-import { hash , verify} from 'argon2'
-import asyncHandler from 'express-async-handler'
+import { hash , verify} from 'argon2';
+import asyncHandler from 'express-async-handler';
 
-import { prisma } from '../prisma.js'
-import { UserFields } from '../utils/user.utils.js'
+import { prisma } from '../prisma.js';
+import { UserFields } from '../utils/user.utils.js';
 
-import { generateToken } from './generate-token.js'
+import { generateToken } from './generate-token.js';
 
 
 
