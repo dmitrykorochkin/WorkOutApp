@@ -56,7 +56,11 @@ try{
 // ************************************************************************************************
 
 export const getExercise = asyncHandler(async (req, res) => {
-  const exercise = await prisma.exercise.findMany()
+  const exercise = await prisma.exercise.findMany({ 
+       orderBy: {
+      createAt: 'desc'
+    }}
+  )
 
   res.json(exercise);
 })
